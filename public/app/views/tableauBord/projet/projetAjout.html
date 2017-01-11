@@ -1,0 +1,90 @@
+<br>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-folder"></i> Projets
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+<hr>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-folder"></i> Ajouter Projet
+                </div>
+                <hr>
+                <div class="box-body">
+
+                    <form ng-submit="ajouter.ajoutProjet()">
+                        <label>Titre:</label>
+                        <input class="form-control" type="text" name="titre" placeholder="Entrez le titre" ng-model="ajouter.ajoutData.titre">
+                        <br>
+                        <label>Type:</label>
+                        <select class="form-control" name="type" ng-model="ajouter.ajoutData.type">
+                        <option>PFA</option>
+                        <option>PFE</option>
+                        <option>Doctorat</option>
+                        </select>
+                        <br>
+                        <label>Description:</label>
+                        <textarea class="form-control" rows="5" name="description" placeholder="Entrez une description" ng-model="ajouter.ajoutData.description"></textarea>
+                        <br>
+                        <label>Etudiant: (hold shift to select more than one):</label>
+                        <select multiple class="form-control" name="etudiants"  ng-model="ajouter.ajoutData.etudiants">
+                           <option ng-repeat="compte in comptesList" value="{{compte._id}}">{{compte.nom}} {{compte.prenom}} : {{compte.email}}</option>
+                        </select>
+                        <br>
+
+                        <!-- upload File -->
+
+
+                        <!-- End  upload File -->
+
+
+                        <button class="btn btn-primary pull-right" type="submit">Ajouter
+                            <i class="fa fa-plus-circle"></i></button>
+                    </form>
+
+                    <br>
+                    <div class="jumbotron text-center" ng-show="ajouter.loading">
+                        <span class="glyphicon glyphicon-repeat spinner"></span>
+                        <p>Loading ... </p>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="ajouter.successMsg">
+                        <div class="alert alert-success">
+                            {{ ajouter.successMsg }}
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="ajouter.errorMsg">
+                        <div class="alert alert-danger">
+                            {{ ajouter.errorMsg }}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /.Left col -->
+    </div>
+</section>

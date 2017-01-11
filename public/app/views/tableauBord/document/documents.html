@@ -1,0 +1,65 @@
+<!-- Page Heading -->
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-fw fa-file"></i> Documents
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+<hr>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3>List des Documents</h3>
+                </div>
+                <hr>
+                <div class="box-body">
+                    <div ng-controller="documentCtrl">
+                        <small>Nombre des Documents :{{uploads.length}}</small>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Date de Creation</th>
+                                <th>File</th>
+
+                            </tr>
+                            </thead>
+
+                            <tr ng-repeat="upload in uploads">
+                                <td>{{upload.nom}}</td>
+                                <td>{{upload.dateCreation}}</td>
+                                <td><a ng-href='{{upload.file.path + "/" + upload.file.originalname}}'>{{upload.file.originalname}}</a></td>
+                                <td>
+                                    <button type="button" class="btn btn-xs" ng-click="redirectToInfo(upload._id);"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-xs" ng-click="suppDocument(upload._id);"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-xs" ng-click="redirectToUpdate(upload._id);"><i class="fa fa-pencil-square-o"></i></button>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /.Left col -->
+
+    </div>
+</section>

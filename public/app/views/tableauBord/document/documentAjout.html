@@ -1,0 +1,81 @@
+<br>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-fw fa-file"></i> Documents
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+<hr>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-fw fa-file"></i> Ajouter Document
+                </div>
+                <hr>
+                <div class="box-body" ng-controller="documentCtrl">
+
+                    <form ng-submit="submit()">
+                        <legend>Télécharger un nouveau fichier :</legend>
+                        <label for="nom">Nom :</label>
+                        <input class="form-control" type="text" name="nom" id="nom" ng-model="upload.nom" required/>
+                        <br/>
+                        <label>Projet :</label>
+                        <select class="form-control" name="projets"  ng-model="upload.projet" required/>
+                            <option ng-repeat="projet in projetsList" value="{{projet._id}}">{{projet.titre}}: {{projet.type}}</option>
+                        </select>
+                        <br/>
+                        <label for="file">Fichier :</label>
+                        <input class="form-control" type="file" name="file" id="file" ng-model="upload.file" ngf-select ngf-max-size="25MB" required/>
+                        <br/>
+
+                        <button class="btn btn-primary pull-right" type="submit">Ajouter
+                            <i class="fa fa-plus-circle"></i></button>
+
+                    </form>
+
+                    <br>
+                    <div class="jumbotron text-center" ng-show="documentCtrl.loading">
+                        <span class="glyphicon glyphicon-repeat spinner"></span>
+                        <p>Loading ... </p>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="documentCtrl.successMsg">
+                        <div class="alert alert-success">
+                            {{ documentCtrl.successMsg }}
+                        </div>
+                    </div>
+
+                    <!--<h2>All uploads are here:</h2>
+                    <ul>
+                        <li ng-repeat="upload in uploads">
+                            <p>{{upload.nom}}</p>
+                            <a ng-href='{{upload.file.path + "/" + upload.file.originalname}}'>{{upload.file.originalname}}</a>
+                        </li>
+                    </ul>-->
+
+                   <!-- <h1>id : {{main.id}}</h1>-->
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /.Left col -->
+    </div>
+</section>

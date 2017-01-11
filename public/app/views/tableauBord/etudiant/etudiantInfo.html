@@ -1,0 +1,80 @@
+<!-- Page Heading -->
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-user"></i> Étudiants
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Main content -->
+<section class="content">
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3>Étudiant</h3>
+                </div>
+                <hr>
+                <div class="box-body">
+                    <div ng-controller="infoCompteCtrl">
+
+                        <p><strong>Nom: </strong> {{compteInfo.nom}} </p>
+                        <p><strong>Prenom: </strong> {{compteInfo.prenom}} </p>
+                        <p><strong>Email: </strong> {{compteInfo.email}}</p>
+                        <p><strong>Tel: </strong>{{compteInfo.telephone}}</p>
+                        <p><strong>CNE: </strong> {{compteInfo.cne}}</p>
+
+                       <hr>
+                        <p><strong>List de ses projets: </strong></p>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Titre</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>PFE</td>
+                                <td>Site Web gestion examens</td>
+                                <td><button type="button" class="btn btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>PFA</td>
+                                <td>Dot Net Framework</td>
+                                <td><button type="button" class="btn btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <div class="box-footer clearfix">
+                            <div class="btn-groupe btn-group-justified" role="group">
+                                <a href="#" class="btn btn-default" role="button" ng-click="suppCompte(compteInfo.email);">Supprimer  <i class="fa fa-trash-o"></i></a>
+                                <a href="#" class="btn btn-default" role="button" ng-click="redirectToUpdate(compteInfo.email);">Modifer  <i class="fa fa-pencil-square-o"></i></a>
+                                <a href="#" class="btn btn-default" role="button" ng-click="redirectToList();">Voir List  <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+            </div>
+</div>
+        </section>
+        <!-- /.Left col -->
+
+    </div>
+</section>
