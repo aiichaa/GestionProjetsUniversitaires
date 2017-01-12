@@ -98,10 +98,12 @@ angular.module('projetControllers', ['projetServices','compteServices'])
         Projet.getDocumentsInProject(id).then(function (res) {
             $scope.documents = res.data.documents;
             //console.log(id);
-            console.log(res.data.documents);
+            //console.log(res.data.documents);
         });
-        /*var m = $http.get('/documentsProjet?projet=' + id);
-        console.log(m);*/
+        $scope.redirectToInfoDocument = function (idDocument) {
+            $location.path('/documentInfo/'+ idDocument);
+        };
+
 
         //function to delete projet
         $scope.suppProjet = function (idData) {

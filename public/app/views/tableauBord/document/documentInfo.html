@@ -47,8 +47,9 @@
                             </tr>
                         </table>
                         </p>
-                        <p><strong>Telecharger : </strong> <a ng-href='{{document.file.path + "/" + document.file.originalname}}'>{{document.file.originalname}}</a> </p>
+                        <p><strong>Telecharger : </strong> <a href='{{downloadPath}}' target="_self"> {{document.file.originalname}}</a> </p>
 
+                        <br>
                         <div class="box-footer clearfix">
                             <div class="btn-groupe btn-group-justified" role="group">
                                 <a href="#" class="btn btn-default" role="button" ng-click="suppDocument(document._id);">Supprimer  <i class="fa fa-trash-o"></i></a>

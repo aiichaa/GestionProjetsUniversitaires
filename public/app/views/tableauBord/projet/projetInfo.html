@@ -23,7 +23,7 @@
 
             <div class="box box-info">
                 <div class="box-header">
-                    <h3>Étudiant</h3>
+                    <h3>Projet</h3>
                 </div>
                 <hr>
                 <div class="box-body">
@@ -32,6 +32,7 @@
                         <p><strong>Titre : </strong> {{projetInfo.titre}} </p>
                         <p><strong>Type : </strong> {{projetInfo.type}} </p>
                         <p><strong>Description : </strong> {{projetInfo.description}}</p>
+                        <br>
                         <strong>Etudiants de ce Projet : </strong>
                             <table class="table table-hover">
                                 <thead>
@@ -47,22 +48,25 @@
                                     <td>{{etudiant.email}}</td>
                                 </tr>
                             </table>
+                        <br>
                         <p><Strong>Documents de ce projet : </Strong>
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Titre</th>
+                                <th>Nom</th>
                                 <th>File</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tr ng-repeat="document in documents">
-                                <td>{{document.titre}}</td>
+                                <td>{{document.nom}}</td>
                                 <td>{{document.file.originalname}}</td>
+                                <td><button type="button" class="btn btn-xs" ng-click="redirectToInfoDocument(document._id);"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
                             </tr>
                         </table>
                         </p>
 
-
+                        <br><br>
                         <div class="box-footer clearfix">
                             <div class="btn-groupe btn-group-justified" role="group">
                                 <a href="#" class="btn btn-default" role="button" ng-click="suppProjet(projetInfo._id);">Supprimer  <i class="fa fa-trash-o"></i></a>

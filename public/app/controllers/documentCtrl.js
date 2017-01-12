@@ -69,6 +69,7 @@ angular.module('documentControllers',['ngFileUpload','projetServices'])
 
         //function to delete projet
         $scope.suppDocument = function (idData) {
+               //delete document from db
             $http.delete('/api/document/' + idData);
             $route.reload();
         };
@@ -81,7 +82,6 @@ angular.module('documentControllers',['ngFileUpload','projetServices'])
         $scope.redirectToInfo = function (id) {
             $location.path('/documentInfo/'+ id);
         };
-        
 
     }])
     .controller('infoDocumentCtrl',function ($http,$location,$routeParams,$scope,Projet) {
@@ -97,6 +97,14 @@ angular.module('documentControllers',['ngFileUpload','projetServices'])
                 $scope.projet = result.data.projet;
             });
 
+            //get the path to download cuz the path is upload\uid\fileName
+            var path = response.data.document.file.path;
+            var mySplit = path.split("\\");
+            var myPath = mySplit[1];
+            //console.log(myPath);
+            var downloadPath = 'http://localhost:3000/api/document/'+myPath+'/'+ response.data.document.file.originalname;
+            //console.log(downloadPath);
+            $scope.downloadPath = downloadPath;
 
         });
 

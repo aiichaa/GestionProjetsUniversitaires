@@ -66,15 +66,29 @@ module.exports = function(router){
      * Delete the File with id
      */
     router.delete('/document/:id',function (req,res) {
+
         Document.remove({_id : req.params.id},function (err) {
             if(err){
                 res.send(err);
             }else{
-                res.json({ success: true, message: 'Document supprimé'});
+                res.json({ success: true, message: 'Document supprimé de la base do donnees'});
             }
-        })
-    });
+        });
 
+        /*Document.findOne({
+            _id : req.params.id
+        }, function (err, upload) {
+            if (err) next(err);
+            else {
+                fs.unlink(upload.file.path, (err) => {
+                    if (err) throw err;
+                    console.log('successfully deleted from hard disk');
+                });
+            }
+            console.log(upload.file);
+        })*/
+
+    });
 
     //Get File by id
     //http://localhost:3000/api/document/:id
@@ -92,7 +106,7 @@ module.exports = function(router){
     });
 
     //Get Documents of a Projet
-    router.get('/documentsProjet',function (req,res) {
+   /* router.get('/documentsProjet',function (req,res) {
         Document.find({projet : req.query["projet"]},function (err,documents) {
               console.log(req.query["projet"]);
             if(err) throw err;
@@ -100,6 +114,17 @@ module.exports = function(router){
                 res.json({success:false, message: 'Aucun document trouvé'});
             }
             else{
+                res.json({success:true, message: 'documents trouvés', documents: documents});
+            }
+        })
+    });*/
+    router.get('/documentsProjet/:id',function (req,res) {
+        Document.find({projet : req.params.id},function (err,documents) {
+            if(err) throw err;
+            if(documents.length==0){
+                res.json({success:false, message: 'Aucun document trouvé'});
+            }
+            else if(documents){
                 res.json({success:true, message: 'documents trouvés', documents: documents});
             }
         })

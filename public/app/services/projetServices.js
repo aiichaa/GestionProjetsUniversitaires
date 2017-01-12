@@ -34,11 +34,7 @@ angular.module('projetServices',[])
 
             //get documents in a project
             getDocumentsInProject : function (projetId) {
-                return $http.get('/documentsProjet', {
-                    params : {
-                        projet : projetId
-                    }
-                });
+                return $http.get('/api/documentsProjet/' + projetId);
             }
         }
 

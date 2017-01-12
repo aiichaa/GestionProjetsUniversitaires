@@ -83,6 +83,11 @@ angular.module('appRoutes',['ngRoute'])
                 templateUrl: '/app/views/tableauBord/document/documentModifier.html',
                 controller: 'modifierDocumentCtrl'
             })
+            .when('/calendrier',{
+                templateUrl: 'app/views/tableauBord/calendrier/calendrier.html'
+            })
+            //Paths for calendar
+            
             .otherwise({
                 redirectTo: '/'
             });
