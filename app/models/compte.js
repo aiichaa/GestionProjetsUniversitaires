@@ -24,18 +24,32 @@ var CompteSchema = new Schema({
 });
 
 //encrypte the password before saving method
-CompteSchema.pre('save',function (next) {
-    var compte = this;
-    bcrypt.hash(compte.motPasse, null, null, function (err, hash) {
-        if(err) return next(err);
-        compte.motPasse = hash;
-        next();
-    });
-});
+/*CompteSchema.pre('save',function (next) {
+ var compte = this;
+ bcrypt.hash(compte.motPasse, null, null, function (err, hash) {
+ if(err) return next(err);
+ compte.motPasse = hash;
+ next();
+ });
+ });*/
 
 //methode for validating the passward
+/*
+ CompteSchema.methods.comparePassword = function (motPasse) {
+ return bcrypt.compareSync(motPasse, this.motPasse);
+ };
+ */
+
+//fonction sans decryptage
 CompteSchema.methods.comparePassword = function (motPasse) {
-    return bcrypt.compareSync(motPasse, this.motPasse);
+
+    if(motPasse == this.motPasse){
+        return true;
+    }
+    else{
+        return false;
+    }
+
 };
 
 module.exports = mongoose.model('Compte', CompteSchema);

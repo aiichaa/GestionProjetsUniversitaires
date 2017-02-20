@@ -14,6 +14,8 @@ var path = require('path');
 var compteRoutes = require('./app/routes/compte')(router);
 var projetRoutes = require('./app/routes/projet')(router);
 var documentRoutes = require('./app/routes/document')(router);
+var rendezvousRoutes = require('./app/routes/rendezvous')(router);
+var rendezvousnotificationRoutes = require('./app/routes/rendezvousnotification')(router);
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -24,6 +26,8 @@ app.use(express.static(__dirname + '/public'));
 app.use('/api',compteRoutes);
 app.use('/api',projetRoutes);
 app.use('/api',documentRoutes);
+app.use('/api',rendezvousRoutes);
+app.use('/api',rendezvousnotificationRoutes);
 
 //connect to database mongo
 mongoose.connect('mongodb://localhost:27017/gestionprojetsuniversitaires',function(err){

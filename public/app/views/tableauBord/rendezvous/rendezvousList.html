@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-folder"></i> Projets
+                <i class="fa fa-fw fa-edit"></i> Rendez-Vous
             </li>
         </ol>
     </div>
@@ -24,28 +24,31 @@
 
             <div class="box box-info">
                 <div class="box-header">
-                    <h3>List des Projets</h3>
+                    <h3>List des Rendez-Vous</h3>
                 </div>
                 <hr>
                 <div class="box-body">
-                    <div ng-controller="projetsCtrl">
-                        <small>Nombre des Projets :{{projetsList.length}}</small>
+                    <div ng-controller="rendezvousListCtrl">
+                        <small>Nombre des Projets :{{rendezvousList.length}}</small>
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>Titre</th>
-                                <th>Type</th>
+                                <th>Date Debut</th>
+                                <th>Date Fin</th>
 
                             </tr>
                             </thead>
 
-                            <tr ng-repeat="projet in projetsList">
-                                <td>{{projet.titre}}</td>
-                                <td>{{projet.type}}</td>
+                            <tr ng-repeat="rendezvous in rendezvousList">
+                                <td>{{rendezvous.title}}</td>
+                                <td>{{rendezvous.startAt | date : 'medium'}}</td>
+                                <td>{{rendezvous.endAt | date : 'medium'}}</td>
+
                                 <td>
-                                    <button type="button" class="btn btn-xs" ng-click="redirectToInfo(projet._id);"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn btn-xs" ng-click="suppProjet(projet._id);"><i class="fa fa-trash-o"></i></button>
-                                    <button type="button" class="btn btn-xs" ng-click="redirectToUpdate(projet._id);"><i class="fa fa-pencil-square-o"></i></button>
+                                    <button type="button" class="btn btn-xs" ng-click="redirectToInfo(rendezvous._id);"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-xs" ng-click="suppRendezvous(rendezvous._id);"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-xs" ng-click="redirectToUpdate(rendezvous._id);"><i class="fa fa-pencil-square-o"></i></button>
                                 </td>
                             </tr>
 

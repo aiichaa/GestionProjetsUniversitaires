@@ -28,10 +28,12 @@
                 <hr>
                 <div class="box-body" ng-controller="documentCtrl">
 
-                    <form ng-submit="submit()">
+                    <form name="form" ng-submit="submit()">
                         <legend>Télécharger un nouveau fichier :</legend>
                         <label for="nom">Nom :</label>
-                        <input class="form-control" type="text" name="nom" id="nom" ng-model="upload.nom" required/>
+                        <input class="form-control" type="text" name="nom" id="nom" ng-model="upload.nom" ng-pattern="/^[a-zA-Z]{1,30}$/" required/>
+                        <span ng-show="form.nom.$error.pattern" style="color:red">Entrez uniquement des lettres et ne depassez pas 30 characters !</span>
+
                         <br/>
                         <label>Projet :</label>
                         <select class="form-control" name="projets"  ng-model="upload.projet" required/>

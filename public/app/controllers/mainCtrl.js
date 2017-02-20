@@ -27,6 +27,7 @@ angular.module('mainController',['authServices'])
                     app.email = data.data.email;
                     app.telephone = data.data.telephone;
                     app.role = data.data.role;
+                    app.cne = data.data.cne;
                     app.loadme = true;
                 });
             }else{

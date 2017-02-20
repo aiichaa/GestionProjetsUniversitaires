@@ -83,11 +83,33 @@ angular.module('appRoutes',['ngRoute'])
                 templateUrl: '/app/views/tableauBord/document/documentModifier.html',
                 controller: 'modifierDocumentCtrl'
             })
-            .when('/calendrier',{
-                templateUrl: 'app/views/tableauBord/calendrier/calendrier.html'
+            //Paths for rendezVous
+            .when('/rendezvousajout',{
+                templateUrl: 'app/views/tableauBord/rendezvous/rendezvousAjout.html',
+                controller: 'ajoutRendezvousCtrl',
+                controllerAs: 'ajouter'
             })
+            .when('/rendezvouslist',{
+                templateUrl: 'app/views/tableauBord/rendezvous/rendezvousList.html',
+                controller: 'rendezvousListCtrl'
+            })
+            .when('/rendezvousInfo/:id',{
+                templateUrl: '/app/views/tableauBord/rendezvous/rendezvousInfo.html',
+                controller: 'infoRendezvousCtrl'
+            })
+            .when('/rendezvousmodifier/:id',{
+                templateUrl: '/app/views/tableauBord/rendezvous/rendezvousModifier.html',
+                controller: 'modifierRendezvousCtrl',
+                controllerAs: 'modifier'
+
+            })
+
             //Paths for calendar
-            
+            .when('/calendrier',{
+                templateUrl: 'app/views/tableauBord/calendrier/calendrier.html',
+                controller: 'calendrierCtrl'
+            })
+
             .otherwise({
                 redirectTo: '/'
             });

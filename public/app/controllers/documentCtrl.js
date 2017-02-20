@@ -124,5 +124,54 @@ angular.module('documentControllers',['ngFileUpload','projetServices'])
             $location.path('/documentmodifier/'+ id);
         };
 
-    });
+    })
+    .controller('modifierDocumentCtrl', ['$http', 'Upload', '$scope','Projet','$location','$route', function($http, Upload, $scope,Projet,$location,$route){
+
+        app =this;
+        //get all project
+        Projet.getProjets().then(function (result) {
+            $scope.projetsList = result.data.projetsList;
+        });
+
+
+        //get all documents
+        $http.get('/api/document').then(function(response){
+            //console.log(response.data);
+            $scope.uploads = response.data;
+        });
+
+        //ajouter un nouveau document
+        $scope.submit = function(){
+            Upload.upload({
+                url: '/api/document',
+                method: 'post',
+                data: $scope.upload
+            }).then(function (response) {
+                //console.log(response.data);
+                $scope.uploads.push(response.data);
+                $scope.upload = {};
+
+                //redirection
+                $location.path('/documents');
+
+            });
+        };
+
+        //function to delete projet
+        $scope.suppDocument = function (idData) {
+            //delete document from db
+            $http.delete('/api/document/' + idData);
+            $route.reload();
+        };
+
+        //function to redirect to the update projet with id
+        $scope.redirectToUpdate = function (id) {
+            $location.path('/documentmodifier/'+ id);
+        };
+        //function to redirect to the info compte with email
+        $scope.redirectToInfo = function (id) {
+            $location.path('/documentInfo/'+ id);
+        };
+
+    }]);
 

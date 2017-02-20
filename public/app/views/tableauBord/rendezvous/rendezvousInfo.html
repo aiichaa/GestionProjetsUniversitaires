@@ -1,0 +1,77 @@
+<!-- Page Heading -->
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-fw fa-edit"></i> Rendez-Vous
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3>Rendez-Vous</h3>
+                </div>
+                <hr>
+                <div class="box-body">
+                    <div ng-controller="infoRendezvousCtrl">
+
+                        <p><strong>Titre : </strong> {{rendezvousInfo.title}} </p>
+                        <p><strong>Description : </strong> {{rendezvousInfo.description}} </p>
+                        <p><strong>Date Debut : </strong> {{rendezvousInfo.startAt | date : 'medium'}} </p>
+                        <p><strong>Date Fin : </strong> {{rendezvousInfo.endAt | date : 'medium'}} </p>
+                        <p><strong>Projet : </strong> {{projetInfo.titre}} ( {{projetInfo.type}} ) </p>
+                        <br>
+                        <strong>Rendez-vous avec les etudiants : </strong>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tr ng-repeat="etudiant in listEtudiants">
+                                <td>{{etudiant.nom}}</td>
+                                <td>{{etudiant.prenom}}</td>
+                                <td>{{etudiant.email}}</td>
+                            </tr>
+                        </table>
+                        <br>
+
+
+
+                        <br><br>
+                        <div class="box-footer clearfix">
+                            <div class="btn-groupe btn-group-justified" role="group">
+                                <a href="#" class="btn btn-default" role="button" ng-click="suppRendezvous(rendezvousInfo._id);">Supprimer  <i class="fa fa-trash-o"></i></a>
+                                <a href="#" class="btn btn-default" role="button" ng-click="redirectToUpdate(rendezvousInfo._id);">Modifer  <i class="fa fa-pencil-square-o"></i></a>
+                                <a href="#" class="btn btn-default" role="button" ng-click="redirectToList();">Voir List  <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+        <!-- /.Left col -->
+
+    </div>
+</section>

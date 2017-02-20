@@ -29,7 +29,7 @@
                         <tr>
                             <td><strong>Nom :</strong></td>
                             <td><strong>Prenom :</strong></td>
-                            <td><strong>CNE :</strong></td>
+                            <td ng-show="!main.isProf();"><strong >CNE :</strong></td>
                             <td><strong>Email :</strong></td>
                             <td><strong>Telephone :</strong></td>
                             <td><strong>Role :</strong></td>
@@ -38,7 +38,7 @@
                         <tr>
                             <td><strong>{{main.nom}}</strong></td>
                             <td><strong>{{main.prenom}}</strong></td>
-                            <td><strong>{{main.cne}}</strong></td>
+                            <td ng-show="!main.isProf();"><strong>{{main.cne}}</strong></td>
                             <td><strong>{{main.email}}</strong></td>
                             <td><strong>{{main.telephone}}</strong></td>
                             <td><strong>{{main.role}}</strong></td>

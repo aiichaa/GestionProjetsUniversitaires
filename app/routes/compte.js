@@ -15,7 +15,7 @@ module.exports = function(router){
 
         if(req.body.nom == null || req.body.nom == ''
             || req.body.prenom == null || req.body.prenom == ''
-            || req.body.cne == null || req.body.cne == ''
+            //|| req.body.cne == null || req.body.cne == ''
             || req.body.email == null || req.body.email == ''
             || req.body.telephone == null || req.body.telephone == ''
             || req.body.motPasse == null || req.body.motPasse == ''
@@ -176,7 +176,7 @@ module.exports = function(router){
 
     //we need to decrypte the token so we can use it in the /profile route to get the current user
     //to do so we'll use a middleware
-    /*router.use(function (req,res,next) {
+   router.use(function (req,res,next) {
         //we can get the token from :
         // the request : req.body.token
         // the url : req.body.query
@@ -196,7 +196,7 @@ module.exports = function(router){
         }else{
             res.json({success : false, message: 'token non inseré'});
         }
-    });*/
+    });
 
     //current user
     //http://localhost:3000/api/compte/profile

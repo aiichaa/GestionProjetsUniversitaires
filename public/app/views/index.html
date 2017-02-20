@@ -20,10 +20,13 @@
     <!-- Custom Fonts -->
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
     <!-- fullCalendar 2.2.5-->
     <link rel="stylesheet" href="assets/css/fullcalendar.min.css">
     <link rel="stylesheet" href="assets/css/fullcalendar.print.css" media="print">
 
+    <!-- angular moment picker-->
+    <link rel="stylesheet" href="assets/css/angular-moment-picker.min.css">
 
     <!-- Main Angular Files -->
     <script src="assets/js/angular.js"></script>
@@ -46,11 +49,15 @@
     <script src="app/controllers/compteCtrl.js"></script>
     <script src="app/controllers/projetCtrl.js"></script>
     <script src="app/controllers/documentCtrl.js"></script>
+    <script src="app/controllers/rendezvousCtrl.js"></script>
+    <script src="app/controllers/calendrierCtrl.js"></script>
 
     <!-- Angular Services -->
     <script src="app/services/authServices.js"></script>
     <script src="app/services/compteServices.js"></script>
     <script src="app/services/projetServices.js"></script>
+    <script src="app/services/rendezvousServices.js"></script>
+    <script src="app/services/rendezvousnotificationServices.js"></script>
 
 
 
@@ -213,7 +220,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li ng-show="main.isProf();">
                     <a href="#" data-toggle="collapse" data-target="#demo2">
                         <i class="fa fa-folder"></i>
                         <span> Projets</span> <i class="fa fa-fw fa-caret-down"></i></a>
@@ -247,10 +254,10 @@
                         <span> Rendez-vous</span> <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo4" class="collapse">
                         <li>
-                            <a href="#">Ajouter un nouveau rendez-vous</a>
+                            <a href="/rendezvousajout">Ajouter un nouveau rendez-vous</a>
                         </li>
                         <li>
-                            <a href="#">Voir la liste des rendez-vous</a>
+                            <a href="/rendezvouslist">Voir la liste des rendez-vous</a>
                         </li>
                     </ul>
                 </li>
@@ -304,6 +311,10 @@
 <script src="assets/js/moment.min.js"></script>
 <!-- fullCalendar 2.2.5 -->
 <script src="assets/js/fullcalendar.js"></script>
+<script src="assets/js/gcal.js"></script>
+<script src="assets/js/calendar.js"></script>
+<!-- angular moment-->
+<script src="assets/js/angular-moment-picker.min.js"></script>
 
 </body>
 

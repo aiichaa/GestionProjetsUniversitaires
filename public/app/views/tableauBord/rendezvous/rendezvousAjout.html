@@ -1,0 +1,102 @@
+<br>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-fw fa-edit"></i> Rendez-Vous
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+<hr>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-fw fa-edit"></i> Ajouter Rendez-Vous
+                </div>
+                <hr>
+                <div class="box-body">
+
+                    <form name="form" ng-submit="ajouter.ajoutRendezvous()">
+                        <label>Titre:</label>
+                        <input class="form-control" type="text" name="title" placeholder="Entrez le titre" ng-model="ajouter.ajoutData.title" ng-pattern="/^[a-zA-Z]{1,30}$/">
+                        <span ng-show="form.title.$error.pattern" style="color:red">Entrez uniquement des lettres et ne depassez pas 30 characters !</span>
+                        <br>
+                        <br>
+                        <label>Description:</label>
+                        <textarea class="form-control" rows="5" name="description" placeholder="Entrez une description" ng-model="ajouter.ajoutData.description"></textarea>
+                        <br>
+                        <label>Projet: </label>
+                        <select class="form-control" name="projet"  ng-model="ajouter.ajoutData.projet">
+                            <option ng-repeat="projet in projetsList" value="{{projet._id}}">{{projet.titre}} ({{projet.type}})</option>
+                        </select>
+
+                        <br>
+                        <label>Date Debut :</label>
+                        <div class="input-group" moment-picker="ajouter.ajoutData.startAt" format="YYYY-MM-DD HH:mm:ss">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input class="form-control" name="startAt" value="{{ ajouter.ajoutData.startAt || 'Cliquez ici pour ajouter la date du rendez vous' }}" ng-model="ajouter.ajoutData.startAt">
+                        </div>
+
+                        <br>
+                        <label>Date Fin:</label>
+                        <div class="input-group" moment-picker="ajouter.ajoutData.endAt" format="YYYY-MM-DD HH:mm:ss" >
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input class="form-control" name="endAt" value="{{ ajouter.ajoutData.endAt || 'Cliquez ici pour ajouter la date du rendez vous' }}" ng-model="ajouter.ajoutData.endAt">
+                        </div>
+                        <br>
+
+                        <label>Coleur qui sera affiche dans le calendrier pour ce rendez-vous:</label>
+                        <input type="color" id="html5colorpicker" name="color" style="width:85%;" ng-model="ajouter.ajoutData.color">
+                        <br>
+
+                        <button class="btn btn-primary pull-right" type="submit">Ajouter
+                            <i class="fa fa-plus-circle"></i></button>
+
+                    </form>
+
+
+                    <br>
+                    <div class="jumbotron text-center" ng-show="ajouter.loading">
+                        <span class="glyphicon glyphicon-repeat spinner"></span>
+                        <p>Loading ... </p>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="ajouter.successMsg">
+                        <div class="alert alert-success">
+                            {{ ajouter.successMsg }}
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="ajouter.errorMsg">
+                        <div class="alert alert-danger">
+                            {{ ajouter.errorMsg }}
+                        </div>
+                    </div>
+
+                    <br>
+
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /.Left col -->
+    </div>
+</section>

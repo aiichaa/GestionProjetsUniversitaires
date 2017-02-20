@@ -1,0 +1,97 @@
+<br>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Tableau de bord <small> Espace Professeur</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-fw fa-edit"></i> Rendez-Vous
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+<hr>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-xs-12 ">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-fw fa-edit"></i> Modifier Rendez-Vous
+                </div>
+                <hr>
+                <div class="box-body" ng-controller="modifierRendezvousCtrl as modifier">
+                    <form ng-submit="modifer.modifierrendezvous()">
+                        <label>Titre : {{rendezvousInfo.title}}</label>
+                        <input class="form-control" type="text" name="title" ng-model="modifier.modifierData.title">
+                        <br>
+                        <label>Description: </label>
+                        <p>{{rendezvousInfo.description}}</p>
+                        <textarea class="form-control" rows="5" name="description" placeholder="Entrez une nouvelle description" ng-model="modifier.modifierData.description"></textarea>
+                        <br>
+                        <label>Projet : {{projetInfo.titre}}</label>
+                        <select class="form-control" name="projet"  ng-model="modifier.modifierData.projet">
+                            <option ng-repeat="projet in projetsList" value="{{projet._id}}">{{projet.titre}} ({{projet.type}})</option>
+                        </select>
+                        <br>
+                        <label>Date Debut : {{rendezvousInfo.startAt | date : 'medium'}}</label>
+                        <div class="input-group" moment-picker="modifier.modifierData.startAt" format="YYYY-MM-DD HH:mm:ss">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input class="form-control" name="startAt" value="{{ modifier.modifierData.startAt || 'Cliquez ici pour ajouter la date du rendez vous' }}" ng-model="modifier.modifierData.startAt">
+                        </div>
+
+                        <br>
+                        <label>Date Fin: {{rendezvousInfo.endAt | date : 'medium'}}</label>
+                        <div class="input-group" moment-picker="modifier.modifierData.endAt" format="YYYY-MM-DD HH:mm:ss">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input class="form-control" name="endAt" value="{{ modifier.modifierData.endAt || 'Cliquez ici pour ajouter la date du rendez vous' }}" ng-model="modifier.modifierData.endAt">
+                        </div>
+                        <br>
+
+                        <label>Coleur qui sera affiche dans le calendrier pour ce rendez-vous: {{rendezvousInfo.color}}</label>
+                        <input type="color" id="html5colorpicker" name="color" style="width:85%;" ng-model="modifier.modifierData.color">
+                        <br>
+                        <br>
+
+                        <button class="btn btn-primary pull-right" type="submit" ng-click="modifier.modifierrendezvous ()">Modifier
+                            <i class="fa fa-plus-circle"></i></button>
+
+                    </form>
+
+
+                    <br>
+                    <div class="jumbotron text-center" ng-show="modifier.loading">
+                        <span class="glyphicon glyphicon-repeat spinner"></span>
+                        <p>Loading ... </p>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="modifier.successMsg">
+                        <div class="alert alert-success">
+                            {{ modifier.successMsg }}
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row show-hide-message" ng-show="modifier.errorMsg">
+                        <div class="alert alert-danger">
+                            {{ modifier.errorMsg }}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /.Left col -->
+    </div>
+</section>

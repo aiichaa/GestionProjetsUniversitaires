@@ -28,21 +28,29 @@
                             <hr>
                             <div class="box-body">
 
-                                <form ng-submit="ajouter.ajoutCompte()">
-                                    <label>Nom:</label>
-                                    <input class="form-control" type="text" name="nom" placeholder="Entrez le nom" ng-model="ajouter.ajoutData.nom">
+                                <form name="form" ng-submit="ajouter.ajoutCompte()">
+                                    <label>Nom: </label>
+                                    <input class="form-control" type="text" name="nom" placeholder="Entrez le nom" ng-model="ajouter.ajoutData.nom" ng-pattern="/^[a-zA-Z]{1,30}$/">
+                                    <span ng-show="form.nom.$error.pattern" style="color:red">Entrez uniquement des lettres et ne depassez pas 30 characters !</span>
+
                                     <br>
                                     <label>Prenom:</label>
-                                    <input class="form-control" type="text" name="prenom" placeholder="Entrez le prenom" ng-model="ajouter.ajoutData.prenom">
+                                    <input class="form-control" type="text" name="prenom" placeholder="Entrez le prenom" ng-model="ajouter.ajoutData.prenom" ng-pattern="/^[a-zA-Z]{1,30}$/">
+                                    <span ng-show="form.prenom.$error.pattern" style="color:red">Entrez uniquement des lettres et ne depassez pas 30 characters !</span>
+
                                     <br>
                                     <label>CNE:</label>
-                                    <input class="form-control" type="text" name="cne" placeholder="Entrez le cne" ng-model="ajouter.ajoutData.cne">
+                                    <input class="form-control" type="text" name="cne" placeholder="Entrez le cne" ng-model="ajouter.ajoutData.cne" ng-pattern="/^[0-9]{1,10}$/">
+                                    <span ng-show="form.cne.$error.pattern" style="color:red">Entrez uniquement des chiffres et ne depassez pas 10 chiffres !</span>
+
                                     <br>
                                     <label>email:</label>
-                                    <input class="form-control" type="text" name="email" placeholder="Entrez l'email" ng-model="ajouter.ajoutData.email">
+                                    <input class="form-control" type="email" name="email" placeholder="Entrez l'email" ng-model="ajouter.ajoutData.email">
                                     <br>
                                     <label>Num Telephone:</label>
-                                    <input class="form-control" type="text" name="telephone" placeholder="Entrez le numero" ng-model="ajouter.ajoutData.telephone">
+                                    <input class="form-control" type="text" name="telephone" placeholder="Entrez le numero" ng-model="ajouter.ajoutData.telephone" ng-pattern="/^[0-9]{1,10}$/">
+                                    <span ng-show="form.telephone.$error.pattern" style="color:red">Entrez uniquement des chiffres et ne depassez pas 10 chiffres !</span>
+
                                     <br>
                                     <label>Mot de Passe:</label>
                                     <input class="form-control" type="password" name="motPasse" placeholder="Entrez le mot de passe" ng-model="ajouter.ajoutData.motPasse">

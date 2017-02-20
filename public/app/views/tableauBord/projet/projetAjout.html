@@ -28,9 +28,10 @@
                 <hr>
                 <div class="box-body">
 
-                    <form ng-submit="ajouter.ajoutProjet()">
+                    <form name="form" ng-submit="ajouter.ajoutProjet()">
                         <label>Titre:</label>
-                        <input class="form-control" type="text" name="titre" placeholder="Entrez le titre" ng-model="ajouter.ajoutData.titre">
+                        <input class="form-control" type="text" name="titre" placeholder="Entrez le titre" ng-model="ajouter.ajoutData.titre" ng-pattern="/^[a-zA-Z]{1,30}$/">
+                        <span ng-show="form.titre.$error.pattern" style="color:red">Entrez uniquement des lettres et ne depassez pas 30 characters !</span>
                         <br>
                         <label>Type:</label>
                         <select class="form-control" name="type" ng-model="ajouter.ajoutData.type">

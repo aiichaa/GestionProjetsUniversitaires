@@ -45,8 +45,8 @@ module.exports = function(router){
      * Create's the file in the database
      */
     router.post('/document', upload.single('file'), function (req, res, next) {
-        console.log(req.body);
-        console.log(req.file);
+        //console.log(req.body);
+        //console.log(req.file);
         var newUpload = {
             nom: req.body.nom,
             projet: req.body.projet,
@@ -129,6 +129,39 @@ module.exports = function(router){
             }
         })
     });
+
+
+    //http://localhost:3000/api/document/:id
+   /* router.put('/document/:id',function (req,res) {
+        //res.send('testing update route');
+        var updDocument = new Document(req.body);
+        var document = {};
+
+        if(updDocument.nom){
+            document.nom = updDocument.nom;
+        }
+        if(updDocument.projet){
+            document.projet = updDocument.projet;
+        }
+        if(updDocument.dateCreation){
+            document.dateCreation = updDocument.dateCreation;
+        }
+        if(updDocument.file){
+            document.file = updDocument.file;
+        }
+
+        if(!document){
+            res.json({ success: false, message: 'Document non modifié'});
+        }else {
+            Document.update({_id : req.params.id},projet,{},function (err, newDocument) {
+                if(err){
+                    res.send(err);
+                }else{
+                    res.json({ success: true, message: 'Document modifié', newDocument : newDocument});
+                }
+            })
+        }
+    });*/
     
 
     return router;
